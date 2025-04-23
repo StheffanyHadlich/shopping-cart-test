@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import { PriceSummary } from './Cart/presentation/components/PriceSummary';
+import { useCart } from './Cart/presentation/hooks/useCart';
+import { Catalog } from './Product/presentation/components/Catalog';
 
 function App() {
+  const { addToCart, removeFromCart, cart, total, quantity } = useCart();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Shopping Cart</h1>
+      <Catalog addToCart={addToCart} removeFromCart={removeFromCart} />
+      <PriceSummary cart={cart} totalPrice={total} quantity={quantity} />
     </div>
   );
 }
